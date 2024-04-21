@@ -1,0 +1,25 @@
+:root {
+  /* COLORS | BRAND */
+  --primary-dark: #273aaa;
+  --primary-light: #f7c7d9;
+
+  /* COLORS | ACCENT */
+  --secondary-pink: #fc4d5c;
+  --secondary-blue: #d1ecef;
+
+  /* COLORS | NEURTAL */
+  --bg-color: #fff5eb;
+  --text-color: #1d1d1b;
+
+  /* GRID */
+  --gap: 2em;
+  --line-offset: calc(var(--gap) / 2);
+  --line-thickness: 2px;
+  --line-color: white;
+
+  /* TEXT | SIZING */
+  --size-h1: 3.5rem;
+  --size-h2: 2rem;
+  --size-h3: 3rem;
+  --size-p: 1.25rem;
+}

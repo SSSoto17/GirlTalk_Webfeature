@@ -1,0 +1,33 @@
+---
+
+const { girl } = Astro.props
+
+---
+
+<div class="container">
+    <h2>{girl.name}, {girl.age} år, bor i {girl.town}</h2>
+    <div class="text">
+        {girl.quotes.map((quote: string) =>{
+            return <p>{quote}</p>
+        })}
+    </div>    
+</div>
+
+<style>
+    .container {
+        background-color: var(--bg-color);
+        max-width: 550px;
+        border-radius: 1rem;
+        padding: 4.5rem 6rem;
+    }
+
+    .text {
+        max-height: 5lh;
+        overflow:scroll;
+    }
+
+    p {
+        color: var(--text-color);
+        font-style: italic;
+    }
+</style>
