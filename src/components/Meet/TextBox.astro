@@ -3,17 +3,24 @@
 const { girl } = Astro.props
 
 ---
-
+<div class="arrow"></div>
 <div class="container">
     <h2>{girl.name}, {girl.age} år, bor i {girl.town}</h2>
     <div class="text">
-        {girl.quotes.map((quote: string) =>{
+        {girl.quotes.map((quote) =>{
             return <p>{quote}</p>
         })}
     </div>    
 </div>
 
 <style>
+
+    .arrow {
+        background-image: url('/public/svg/arrow.svg');
+        background-repeat: no-repeat;
+        background-position: 50%;
+        height: 60px;
+    }
     .container {
         background-color: var(--bg-color);
         max-width: 550px;

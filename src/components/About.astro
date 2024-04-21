@@ -1,3 +1,107 @@
 ---
 
+const article = [
+    {
+        text: ["Konstant pres fra sociale medier gør at unge kvinder hele tiden sammenligner deres liv med andres.",
+            "Derudover oplever mange, at samfundet  har bestemte forventninger til dem."
+        ],
+        sticky: "Mine fejl og mangler var alt, hvad jeg kunne fokusere på",
+        author: "Lara, 19 år"
+    },
+    {
+        text: ["Man skal opnå gode resultater i skolen, under sin uddannelse og i løbet af sin karriere.",
+            "Det er også essentielt at føle sig inkluderet og accepteret af ens sociale cirkel."
+        ],
+        sticky: "Jeg var fanget i mit eget tankemylder af negative tanker",
+        author: "Jasmin, 16 år"
+    },
+    {
+        text: ["Der er meget, man hele tiden skal forholde sig til, og det kan være overvældende at håndtere alene.",
+            "Dette er historien om tre piger, hvis liv blev beriget af et stærkt og støttende fælleskab."
+        ],
+        sticky: "Jeg plejede at tro, at jeg var alene om mine kampe",
+        author: "Sarah, 21 år"
+    }
+]
+
 ---
+<div class="container">
+    <p class="subheading">
+        Unge kvinder mellem 16-24 år står over for en voksende udfordring med eget velvære og selvopfattelse.
+    </p>
+    <section>
+        {article.map(article => {
+            return <article>
+                <div class="text">
+                    {article.text.map(para => {
+                    return <p>{para}</p>
+                })}
+                    </div>
+            <div class="sticky">
+                <p class="quote">{article.sticky}</p>
+                <p class="quotee">– {article.author}</p>
+            </div>
+        </article>
+        })}    
+    </section>
+</div>
+<style>
+
+    .container {
+        padding: 8rem 0;
+    }
+
+    p.subheading {
+        font-size: 2.5rem;
+        font-weight: 600;
+        padding: 2rem 0;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+article {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+    gap: 2rem;
+}
+
+article .text {
+    grid-column: span 2;
+    align-self: center;
+}
+
+article:nth-child(2) .text {
+    order: 1;
+}
+
+.sticky {
+    width: 275px;
+    height: 275px;
+    background-image: url("/public/svg/stickynote.svg");
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    transform: rotate(15deg);
+    
+}
+
+article:nth-child(2) .sticky {
+    transform: rotate(-15deg);
+}
+
+.sticky p {
+    color: var(--text-color);
+}
+
+.sticky p.quote {
+    font-style: italic;
+}
+
+</style>

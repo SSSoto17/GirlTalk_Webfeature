@@ -45,3 +45,12 @@ p {
 p:not(:last-child) {
   margin-bottom: 1.5rem;
 }
+
+a {
+  text-decoration: none;
+  color: var(--secondary-pink);
+}
+
+li {
+  list-style-type: none;
+}

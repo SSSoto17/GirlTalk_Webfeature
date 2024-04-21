@@ -2,6 +2,10 @@
 
 import { Image } from "astro:assets";
 
+import imgLara from "../../img/Lara.png"
+import imgJasmin from "../../img/Jasmin.png"
+import imgSarah from "../../img/Sarah.png"
+
 import TextBox from "./TextBox.astro"
 
 const girls = [
@@ -9,6 +13,7 @@ const girls = [
         name: "Lara",
         age: "19",
         town: "Aalborg",
+        img: imgLara,
         quotes: [
     "“Jeg har altid haft svært ved at se mig selv i spejlet og føle mig tilfreds med det billede, der mødte mig.”",
     "“At acceptere mig selv har været en konstant kamp, hvor jeg altid følte mig som min egen værste kritiker.”",
@@ -21,6 +26,7 @@ const girls = [
         name: "Jasmin",
         age: "16",
         town: "Odense",
+        img: imgJasmin,
         quotes: [
     "“Jeg følte mig konstant utilstrækkelig og sammenlignede mig selv med andre piger.”",
     "“Jeg husker tydeligt den første gang, jeg delte mine tanker i gruppen. Jeg følte mig endelig set og hørt.”",
@@ -33,6 +39,7 @@ const girls = [
         name: "Sarah",
         age: "21",
         town: "Gistrup",
+        img: imgSarah,
         quotes: [
     "“Jeg var omgivet af folk, men alligevel følte jeg mig alene. Det var som om, ingen rigtig forstod mig.”",
     "“Jeg plejede at gemme mig bag en facade, fordi jeg troede, at ingen ville forstå mig alligevel.”",
@@ -48,13 +55,78 @@ const girls = [
 <h1>Mød Lara, Jasmin og Sarah</h1>
 
 <ul class="container">
-    <li></li>
+    {girls.map(girl=>{
+        return <li>
+            <Image src={girl.img} alt="" class="portrait" />
+            <div class="text-box">
+                <TextBox girl={girl} />
+            </div>
+            </li>
+    })}
 </ul>
-
-{girls.map(girl=>{
-    return <TextBox girl={girl} />
-})}
 
 <style>
 
+    .container {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .container li {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        align-items: center;
+        overflow: visible;
+    }
+
+    .portrait {
+        width: 300px;
+        border-radius: 100%;
+        cursor: pointer;
+        transition: .15s ease-in;
+    }
+
+    .portrait:hover {
+        transform: scale(1.05);
+        filter: opacity(75%);
+
+    }
+
+    .text-box {
+        display: none;        
+    }
+
+    .text-box.active {
+        display: block;
+        width: 550px;
+    }    
+
 </style>
+
+<script>
+const girlPortraits = document.querySelectorAll(".portrait");
+const textBoxes = document.querySelectorAll(".text-box");
+
+console.log(textBoxes);
+
+girlPortraits.forEach(element => {
+    element.addEventListener("click", function() {
+        const currentTextBox = this.parentNode.querySelector(".text-box");
+
+        // Check if the current text box is already active
+        const isActive = currentTextBox.classList.contains('active');
+
+        // Remove 'active' class from all text boxes
+        textBoxes.forEach(box => {
+            box.classList.remove('active');
+        });
+
+        // Toggle 'active' based on previous state of the clicked text box
+        if (!isActive) {
+            currentTextBox.classList.add("active");
+        }
+    })
+})
+</script>
