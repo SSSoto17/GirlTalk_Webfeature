@@ -99,12 +99,11 @@ article:nth-child(2) .text {
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    transform: rotate(15deg);
-    
-}
-
-article:nth-child(2) .sticky {
-    transform: rotate(-15deg);
+    /* ANIMATION PROPERTIES */
+    transform: translateY(275px);
+    opacity: 0;
+    filter: blur(5px);
+    transition: all .3s ease-out;
 }
 
 .sticky p {
@@ -117,4 +116,32 @@ article:nth-child(2) .sticky {
     font-style: italic;
 }
 
+.sticky.pop {
+    opacity: 1;
+    filter: blur(0);
+    transform: rotate(15deg) translateY(0);
+}
+
+article:nth-child(2) .sticky.pop {
+    transform: rotate(-15deg) translateY(0);
+}
+
 </style>
+
+<script>
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("pop");
+            }
+        })
+    })
+
+    const stickyNotes = document.querySelectorAll(".sticky");
+
+    stickyNotes.forEach(element => {
+        observer.observe(element)
+    })
+
+</script>
