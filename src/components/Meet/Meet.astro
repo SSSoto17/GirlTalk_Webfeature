@@ -52,27 +52,35 @@ const girls = [
 
 ---
 
-<h1>Mød Lara, Jasmin og Sarah</h1>
+<div class="container">
+    <h1>Mød Lara, Jasmin og Sarah</h1>
+    <ul>
+        {girls.map(girl=>{
+            return <li>
+                <Image src={girl.img} alt="" class="portrait" />
+                <div class="text-box">
+                    <TextBox girl={girl} />
+                </div>
+                </li>
+        })}
+    </ul>
+</div>
 
-<ul class="container">
-    {girls.map(girl=>{
-        return <li>
-            <Image src={girl.img} alt="" class="portrait" />
-            <div class="text-box">
-                <TextBox girl={girl} />
-            </div>
-            </li>
-    })}
-</ul>
+
+
 
 <style>
 
     .container {
+        grid-column: 2;
+    }
+
+    ul {
         display: flex;
         justify-content: space-between;
     }
 
-    .container li {
+    li {
         display: flex;
         flex-direction: column;
         gap: 3rem;

@@ -2,7 +2,7 @@
 
 import Accordion from "./Accordion.astro";
 
-const info = [
+const faq = [
     {
         q: "Hvor finder jeg Sisterhood henne?",
         a: "Sisterhood har grupper i både Odense og Aalborg."
@@ -34,11 +34,11 @@ const info = [
 <div class="container">
     <h1>Bliv en del af vores Sisterhood</h1>
     <p>Sisterhood er et gratis tilbud til dig, som er mellem 16 og 24 år, og som søger et trygt frirum i et fællesskab med andre unge kvinder, hvor vi styrker hinanden gennem samtale, kreativitet og aktivitet.</p>
-    <div class="info">
+    <div>
         <h3>Lær mere</h3>
         <ul>
-            {info.map(info => {
-                return <Accordion question={info.q} answer={info.a} />
+            {faq.map(faq => {
+                return <Accordion question={faq.q} answer={faq.a} />
             })}
         </ul>
     </div>
@@ -46,6 +46,7 @@ const info = [
 
 <style>
     .container {
+        grid-column: 2;
         display: flex;
         flex-direction: column;
         gap: 6rem;
