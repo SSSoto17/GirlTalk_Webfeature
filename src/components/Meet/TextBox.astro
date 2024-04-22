@@ -6,9 +6,9 @@ const { girl } = Astro.props
 <div class="arrow"></div>
 <div class="container">
     <h2>{girl.name}, {girl.age} år, bor i {girl.town}</h2>
-    <div class="text">
+    <div class="content">
         {girl.quotes.map((quote) =>{
-            return <p>{quote}</p>
+            return <article><p>{quote}</p></article>
         })}
     </div>    
 </div>
@@ -28,10 +28,16 @@ const { girl } = Astro.props
         padding: 4rem 6rem;
     }
 
-    .text {
-        max-height: 5lh;
-        overflow:scroll;
-        padding: .5rem 0;
+    .content {
+        max-height: 100px;
+        overflow: scroll;        
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+
+    article {        
+        scroll-snap-align: start;
+        height: 100px;
     }
 
     p {
