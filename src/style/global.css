@@ -5,6 +5,10 @@ body {
 main {
   max-width: 1120px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4rem;
 }
 
 h1 {

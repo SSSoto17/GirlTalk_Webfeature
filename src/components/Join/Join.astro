@@ -1,0 +1,59 @@
+---
+
+import Accordion from "./Accordion.astro";
+
+const info = [
+    {
+        q: "Hvor finder jeg Sisterhood henne?",
+        a: "Sisterhood har grupper i både Odense og Aalborg."
+    },
+    {
+        q: "Hvordan foregår Sisterhood?",
+        a: "Sisterhood er et fællesskab, hvor unge kvinder mødes over en periode på 8 til 16 uger. Du kan tilmelde dig og deltage løbende i løbet af denne periode."
+    },
+    {
+        q: "Hvad kan jeg forvente af Sisterhood?",
+        a: "Sisterhood tilbyder et særligt fællesskab, hvor du bliver mødt og accepteret som du er. Her kan du åbne dig op og spejle dig i andre unge kvinder, og få redskaber til at håndtere udfordringer i hverdagen samt opbygge mere selvtillid."
+    },
+    {
+        q: "Hvad sker der under møderne?",
+        a: "Hver gruppegang har et tema, som deltagerne selv er med til at planlægge. Emnerne kan variere fra præstationspres og veninder til sociale medier, krop, ensomhed og meget mere."
+    },
+    {
+        q: "Er Sisterhood noget for mig?",
+        a: "Hvis du gerne vil være en del af et fællesskab, hvor du møder andre unge kvinder og frit kan tale om det, der fylder i din hverdag, så er Sisterhood helt sikkert noget for dig. Det er et trygt rum, hvor du kan lære at håndtere livets udfordringer og få mere tro på dig selv."
+    },
+    {
+        q: "Hvordan kan jeg deltage i Sisterhood?",
+        a: "Du kan tilmelde dig Sisterhood ved at udfylde denne formular. Vi byder altid nye medlemmer velkommen, så du kan tilslutte dig når som helst i løbet af programmet."
+    }
+]
+
+---
+
+<div class="container">
+    <h1>Bliv en del af vores Sisterhood</h1>
+    <p>Sisterhood er et gratis tilbud til dig, som er mellem 16 og 24 år, og som søger et trygt frirum i et fællesskab med andre unge kvinder, hvor vi styrker hinanden gennem samtale, kreativitet og aktivitet.</p>
+    <div class="info">
+        <h3>Lær mere</h3>
+        <ul>
+            {info.map(info => {
+                return <Accordion question={info.q} answer={info.a} />
+            })}
+        </ul>
+    </div>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
+        padding: 10rem 0;
+    }
+
+    p {
+        font-size: 2rem;
+    }
+</style>
+

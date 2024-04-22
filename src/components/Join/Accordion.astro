@@ -1,0 +1,56 @@
+---
+
+const { question, answer } = Astro.props
+
+---
+
+<li>
+    <h4>{question} <img src="/svg/star.svg" alt=""></h4>
+    <p>{answer}</p>
+</li>
+
+<style>
+
+    h4, p {
+        border-bottom: 1px solid var(--primary-dark);
+    }
+
+    h4 {
+        font-size: 2rem;
+        font-family: "archivo-variable", sans-serif;
+        font-variation-settings: "wght" 600, "wdth" 110;
+        color: var(--primary-dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;        
+        cursor: pointer;
+    }
+
+    p {
+        font-size: 2rem;
+        padding: 2.25rem 0;
+        display: none;
+    }
+
+    p.active {
+        display: block;
+    }
+
+    img {
+        width: 40px;
+    }
+
+</style>
+
+<script>
+
+    const question = document.querySelectorAll("h4");
+
+    question.forEach(element => {
+        element.addEventListener("click", function() {
+            this.parentNode.querySelector("p").classList.toggle("active");
+        })
+    })
+
+</script>
