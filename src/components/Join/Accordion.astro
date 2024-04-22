@@ -6,7 +6,9 @@ const { question, answer } = Astro.props
 
 <li>
     <h4>{question} <img src="/svg/star.svg" alt=""></h4>
-    <p>{answer}</p>
+    <div class="content">
+        <p>{answer}</p>
+    </div>    
 </li>
 
 <style>
@@ -25,17 +27,25 @@ const { question, answer } = Astro.props
         align-items: center;
         padding: 1.5rem 0;        
         cursor: pointer;
+        z-index: 20;
+    }
+
+    .content {
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: all .3s ease-in-out;
+    }
+
+    .content.active {
+        max-height: 200px;
+        opacity: 1;
     }
 
     p {
         font-size: 2rem;
         padding: 2.25rem 0;
-        display: none;
-    }
-
-    p.active {
-        display: block;
-    }
+    }    
 
     img {
         width: 40px;
@@ -49,7 +59,7 @@ const { question, answer } = Astro.props
 
     question.forEach(element => {
         element.addEventListener("click", function() {
-            this.parentNode.querySelector("p").classList.toggle("active");
+            this.parentNode.querySelector(".content").classList.toggle("active");
         })
     })
 

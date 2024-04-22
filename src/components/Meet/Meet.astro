@@ -93,6 +93,7 @@ const girls = [
     .container {
         grid-column: 2;
         margin: 10rem 0 20rem;
+        z-index: 500;
     }
 
     ul {
@@ -108,6 +109,25 @@ const girls = [
         max-width: 300px;
         overflow: visible;
         position: relative;
+        /* ANIMATION PROPERTIES */
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-100%);
+        transition: all .5s ease-in;
+    }
+
+    li.show {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+    }
+
+    li.show:nth-child(2) {
+        transition-delay: 200ms;
+    }
+
+    li.show:nth-child(3) {
+        transition-delay: 400ms;
     }
 
     .portrait {
@@ -124,15 +144,22 @@ const girls = [
     }
 
     .text-box {
-        display: none;
         position: absolute;
-        bottom: -416px;    
+        bottom: -416px;
+        overflow: hidden;
+        width: 550px;
+        /* ANIMATION PROPERTIES */
+        opacity: 0;
+        max-height: 0;
+        transform: scale(75%);
+        transition: all .2s ease-out;
     }
 
     .text-box.active {
-        display: block;
-        width: 550px;
-        z-index: 500;
+        max-height: 600px;
+        
+        opacity: 1;
+        transform: scale(1);
     }
 
     /* WAVE */
@@ -203,4 +230,20 @@ girlPortraits.forEach(element => {
         }
     })
 })
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show")
+        }
+    })
+})
+
+const girls = document.querySelectorAll("li");
+
+girls.forEach(element => {
+        observer.observe(element)
+    })
+
+
 </script>
