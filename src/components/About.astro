@@ -25,33 +25,43 @@ const article = [
 ]
 
 ---
-<div class="container">
-    <p class="subheading">
-        Unge kvinder mellem 16-24 år står over for en voksende udfordring med eget velvære og selvopfattelse.
-    </p>
-    <section>
-        {article.map(article => {
-            return <article>
-                <div class="text">
-                    {article.text.map(para => {
-                    return <p>{para}</p>
-                })}
-                    </div>
-            <div class="sticky">
-                <p class="quote">{article.sticky}</p>
-                <p class="quotee">– {article.author}</p>
-            </div>
-        </article>
-        })}    
-    </section>
-</div>
+  
+    <div class="container">
+        <section>
+            <p class="subheading">
+            Unge kvinder mellem 16-24 år står over for en voksende udfordring med eget velvære og selvopfattelse.
+        </p>
+        </section>        
+        <section>
+            {article.map(article => {
+                return <article>
+                    <div class="text">
+                        {article.text.map(para => {
+                        return <p>{para}</p>
+                    })}
+                        </div>
+                <div class="sticky">
+                    <p class="quote">{article.sticky}</p>
+                    <p class="quotee">– {article.author}</p>
+                </div>
+            </article>
+            })}    
+        </section>
+    </div>
+
 <style>
 
     .container {
-        grid-column: 2;
-        padding: 8rem 0;
+        grid-column: span 3;
+        display: grid;
+        grid-template-columns: subgrid;
+        padding: 4rem 0;
+        background-color: var(--primary-light);
     }
 
+    section {
+        grid-column: 2;
+    }
     p.subheading {
         font-size: 2.5rem;
         font-weight: 600;

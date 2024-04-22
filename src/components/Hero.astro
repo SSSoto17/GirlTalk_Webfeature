@@ -5,29 +5,61 @@
 <div class="container">
     <h1>Sisterhood: Tre Pigers Rejse Mod Selvværd og Styrke</h1>
     <img src="/svg/hero.svg" alt="Illustration of a girl with flowing long hair">
+    <div class="custom-shape-divider-bottom-1713812182">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+        </svg>
+    </div>
 </div>
+
 
 <style>
 
     .container {
-        grid-column: 2;
-        height: 600px;
+        grid-column: span 3;
+        display: grid;
+        grid-template-columns: subgrid;
+        height: 40rem;
         position: relative;
-        display: flex;
-        justify-content: end;
+        justify-items: end;
         align-items: center;
     }
 
     h1 {
+        grid-column: 2;
         max-width: 800px;
     }
 
     img {
+        grid-column: 2;
         position: absolute;
         top: 3.5rem;
         left: -40rem;
         width: 2070px;
+        z-index: -150;
     }
+
+    /* WAVE */
+
+    .custom-shape-divider-bottom-1713812182 {
+    position: absolute;
+    bottom: -.5rem;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1713812182 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 111px;
+}
+
+.custom-shape-divider-bottom-1713812182 .shape-fill {
+    fill: #F7C7D9;
+}
 
 </style>
 

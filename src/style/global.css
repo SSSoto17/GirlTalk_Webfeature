@@ -5,7 +5,6 @@ body {
 main {
   display: grid;
   grid-template-columns: 1fr 1120px 1fr;
-  gap: 4rem 0;
 }
 
 h1 {
