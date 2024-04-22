@@ -1,0 +1,102 @@
+---
+import "../style/global.css";
+---
+<div class="fold-ud">
+    <div class="spoergsmaal-fold-ud-1">
+        <div class="spoergsmaal-1">
+            <h3>Hvor finder jeg Sisterhood henne?</h3>
+            <img src="/stjerne.png" alt="Vise en stjerne" onclick="toggle('svar-1')">
+        </div>
+        <p id="svar-1" style="display: none; ">Sisterhood har grupper i både Odense og Aalborg.</p>
+    </div>
+
+    <div class="spoergsmaal-fold-ud-2">
+        <div class="spoergsmaal-2">
+            <h3>Hvordan foregår Sisterhood?</h3>
+            <img src="/stjerne.png" alt="Vise en stjerne" onclick="toggle('svar-2')">
+        </div>
+        <p id="svar-2" style="display: none; ">Sisterhood er et fællesskab, hvor unge kvinder mødes over en periode på 8
+            til 16 uger. Du kan tilmelde dig og deltage løbende i løbet af denne periode.</p>
+    </div>
+
+    <div class="spoergsmaal-fold-ud-3">
+        <div class="spoergsmaal-3">
+            <h3>Hvad kan jeg forvente af Sisterhood?</h3>
+            <img src="/stjerne.png" alt="Vise en stjerne" onclick="toggle('svar-3')">
+        </div>
+        <p id="svar-3" style="display: none; ">Sisterhood tilbyder et særligt fællesskab, hvor du bliver mødt og
+            accepteret som du er. Her kan du åbne dig op og spejle dig i andre unge kvinder, og få redskaber til at
+            håndtere udfordringer i hverdagen samt opbygge mere selvtillid.</p>
+    </div>
+
+    <div class="spoergsmaal-fold-ud-4">
+        <div class="spoergsmaal-4">
+            <h3>Hvad sker der under møderne?</h3>
+            <img src="/stjerne.png" alt="Vise en stjerne" onclick="toggle('svar-4')">
+        </div>
+        <p id="svar-4" style="display: none; ">Hver gruppegang har et tema, som deltagerne selv er med til at planlægge.
+            Emnerne kan variere fra præstationspres og veninder til sociale medier, krop, ensomhed og meget mere.</p>
+    </div>
+
+    <div class="spoergsmaal-fold-ud-5">
+        <div class="spoergsmaal-5">
+            <h3>Er Sisterhood noget for mig?</h3>
+            <img src="/stjerne.png" alt="Vise en stjerne" onclick="toggle('svar-5')">
+        </div>
+        <p id="svar-5" style="display: none; "> Hvis du gerne vil være en del af et fællesskab, hvor du møder andre unge
+            kvinder og frit kan tale om det, der fylder i din hverdag, så er Sisterhood helt sikkert noget for dig. Det
+            er et trygt rum, hvor du kan lære at håndtere livets udfordringer og få mere tro på dig selv.</p>
+    </div>
+
+    <div class="spoergsmaal-fold-ud-6">
+        <div class="spoergsmaal-6">
+            <h3>Hvordan kan jeg deltage i Sisterhood?</h3>
+            <img src="/stjerne.png" alt="Vise en stjerne" onclick="toggle('svar-6')">
+        </div>
+        <p id="svar-6"> Du kan tilmelde dig Sisterhood ved at udfylde denne formular. Vi byder
+            altid nye medlemmer velkommen, så du kan tilslutte dig når som helst i løbet af programmet.</p>
+    </div>
+</div>
+
+<style>
+    .fold-ud {
+        position: relative;
+        padding: 0 33% 0 33%;
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .spoergsmaal-1,
+    .spoergsmaal-2,
+    .spoergsmaal-3,
+    .spoergsmaal-4,
+    .spoergsmaal-5,
+    .spoergsmaal-6 {
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+        border: none;
+        border-bottom: 1px solid var(--primary-color-b);
+        color: var(--primary-color-b);
+    }
+
+    p {
+        color: var(--primary-color-b);
+    }
+</style>
+
+
+<script>
+    function toggle(id) {
+        var element = document.getElementById(id);
+        if (element) {
+            if (element.style.display === 'none') {
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+    }
+</script>
