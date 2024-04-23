@@ -4,7 +4,10 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: 1fr 1120px 1fr;
+  grid-template-columns: minmax(1.5rem, 1fr) minmax(10px, 1120px) minmax(
+      1.5rem,
+      1fr
+    );
 }
 
 h1 {
@@ -12,7 +15,7 @@ h1 {
   font-weight: 700;
   font-style: normal;
   font-size: var(--size-h1);
-  line-height: 4.5rem;
+  line-height: 3rem;
   text-transform: uppercase;
   color: var(--primary-dark);
   margin-bottom: 3rem;
@@ -24,7 +27,7 @@ h3 {
   font-variation-settings: "wght" 600, "wdth" 110;
   text-transform: uppercase;
   color: var(--primary-dark);
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
 h2 {
@@ -58,4 +61,15 @@ a {
 
 li {
   list-style-type: none;
+}
+
+@media (min-width: 1000px) {
+  h1 {
+    line-height: 4.5rem;
+  }
+
+  h2,
+  h3 {
+    margin-bottom: 2rem;
+  }
 }

@@ -48,6 +48,10 @@ const faq = [
 
 <style>
 
+    h1 {
+        font-size: 1.75rem;
+    }
+
     .container {
         grid-column: span 3;
         display: grid;
@@ -59,13 +63,36 @@ const faq = [
         grid-column: 2;
         display: flex;
         flex-direction: column;
-        gap: 6rem;
+        gap: 1rem;
+        padding: 5rem 0;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+
+    @media (min-width: 650px) {
+        h1 {
+            font-size: var(--size-h1);
+        }
+
+        section {
+        gap: 3rem;
         padding: 10rem 0;
+    }
         
+    }
+
+    @media (min-width: 1000px) {
+
+        section {
+        gap: 6rem;
     }
 
     p {
         font-size: 2rem;
+    }
+        
     }
 </style>
 

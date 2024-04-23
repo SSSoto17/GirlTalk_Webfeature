@@ -92,28 +92,29 @@ const girls = [
 
     .container {
         grid-column: 2;
-        margin: 10rem 0 20rem;
+        padding: 5rem 0 10rem;
         z-index: 500;
     }
 
     ul {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
     }
 
     li {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 2rem;
         align-items: center;
-        max-width: 300px;
+        width: minmax(300px, 100%);
         overflow: visible;
         position: relative;
-        /* ANIMATION PROPERTIES */
         opacity: 0;
         filter: blur(5px);
         transform: translateX(-100%);
-        transition: all .5s ease-in;
+        transition: all .5s ease-in;        
     }
 
     li.show {
@@ -131,7 +132,7 @@ const girls = [
     }
 
     .portrait {
-        width: 300px;
+        width: 200px;
         border-radius: 100%;
         cursor: pointer;
         transition: .15s ease-in;
@@ -140,15 +141,10 @@ const girls = [
     .portrait:hover {
         transform: scale(1.05);
         filter: opacity(75%);
-
     }
 
     .text-box {
-        position: absolute;
-        bottom: -416px;
         overflow: hidden;
-        width: 550px;
-        /* ANIMATION PROPERTIES */
         opacity: 0;
         max-height: 0;
         transform: scale(75%);
@@ -156,8 +152,7 @@ const girls = [
     }
 
     .text-box.active {
-        max-height: 600px;
-        
+        max-height: 600px;        
         opacity: 1;
         transform: scale(1);
     }
@@ -166,7 +161,7 @@ const girls = [
 
     .custom-shape-divider-top-1713812774 {
     position: absolute;
-    top: 0;
+    top: -1px;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -178,7 +173,7 @@ const girls = [
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 168px;
+    height: 70px;
 }
 
 .custom-shape-divider-top-1713812774 .shape-fill {
@@ -187,7 +182,7 @@ const girls = [
 
 .custom-shape-divider-bottom-1713813262 {
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -199,11 +194,59 @@ const girls = [
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 250px;
+    height: 50px;
 }
 
 .custom-shape-divider-bottom-1713813262 .shape-fill {
     fill: #F7C7D9;
+}
+
+@media (min-width: 650px) {
+
+    li {
+        gap: 3rem;
+    }
+
+    .text-box {
+        width: 550px;
+    }
+    
+    .portrait {
+        width: 300px;
+    }
+}
+
+@media (min-width: 1000px) {
+    ul {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+        gap: 1rem;
+    }
+
+    li {
+        max-width: 300px;
+    }
+
+    .container {
+        padding: 10rem 0 20rem;
+    }
+
+    
+
+    .text-box {
+        position: absolute;
+        bottom: -416px;        
+    }
+
+    .custom-shape-divider-top-1713812774 svg {
+    height: 168px;
+}
+
+    .custom-shape-divider-bottom-1713813262 svg {
+    height: 250px;
+}
+
 }
 
 </style>

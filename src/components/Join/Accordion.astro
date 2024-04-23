@@ -18,12 +18,13 @@ const { question, answer } = Astro.props
     }
 
     h4 {
-        font-size: 2rem;
+        font-size: 1.25rem;
         font-family: "archivo-variable", sans-serif;
         font-variation-settings: "wght" 600, "wdth" 110;
         color: var(--primary-dark);
         display: flex;
         justify-content: space-between;
+        gap: 2rem;
         align-items: center;
         padding: 1.5rem 0;        
         cursor: pointer;
@@ -38,17 +39,40 @@ const { question, answer } = Astro.props
     }
 
     .content.active {
-        max-height: 200px;
+        max-height: 300px;
         opacity: 1;
     }
 
     p {
-        font-size: 2rem;
-        padding: 2.25rem 0;
+        font-size: 1.25rem;
+        padding: 2rem 0;
     }    
 
     img {
+        width: 20px;
+    }
+
+    @media (min-width: 650px) {
+        h4 {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (min-width: 1000px) {
+
+        h4 {
+        font-size: 2rem;
+    }
+        
+        p {
+        font-size: 2rem;
+        padding: 2.25rem 0;
+    }
+
+    img {
         width: 40px;
+    }
+
     }
 
 </style>

@@ -25,12 +25,12 @@ const { girl } = Astro.props
         background-color: var(--bg-color);
         max-width: 550px;
         border-radius: 1rem;
-        padding: 4rem 6rem;
+        padding: 2rem 2.5rem;
     }
 
     .content {
-        max-height: 100px;
-        overflow: scroll;        
+        max-height: 80px;
+        overflow: scroll;      
         scroll-snap-type: y mandatory;
         scroll-behavior: smooth;
     }
@@ -43,5 +43,11 @@ const { girl } = Astro.props
     p {
         color: var(--text-color);
         font-style: italic;
+    }
+
+    @media (min-width: 650px) {
+        .container {
+            padding: 4rem 6rem;
+        }
     }
 </style>
