@@ -25,75 +25,96 @@ const article = [
 ]
 
 ---
-<div class="container">
-    <p class="subheading">
-        Unge kvinder mellem 16-24 år står over for en voksende udfordring med eget velvære og selvopfattelse.
-    </p>
-    <section>
-        {article.map(article => {
-            return <article>
-                <div class="text">
-                    {article.text.map(para => {
-                    return <p>{para}</p>
-                })}
-                    </div>
-            <div class="sticky">
-                <p class="quote">{article.sticky}</p>
-                <p class="quotee">– {article.author}</p>
-            </div>
-        </article>
-        })}    
-    </section>
-</div>
+  
+    <div class="container">
+        <section>
+            <p class="subheading">
+            Unge kvinder mellem 16-24 år står over for en voksende udfordring med eget velvære og selvopfattelse.
+        </p>
+        </section>        
+        <section>
+            {article.map(article => {
+                return <article>
+                    <div class="text">
+                        {article.text.map(para => {
+                        return <p>{para}</p>
+                    })}
+                        </div>
+                        <div class="sticky_container">
+                            <div class="sticky">
+                                <p class="quote">{article.sticky}</p>
+                                <p class="quotee">– {article.author}</p>
+                            </div>
+                        </div>
+            </article>
+            })}    
+        </section>
+    </div>
+
 <style>
 
     .container {
-        padding: 8rem 0;
-    }
-
-    p.subheading {
-        font-size: 2.5rem;
-        font-weight: 600;
-        padding: 2rem 0;
+        grid-column: span 3;
+        display: grid;
+        grid-template-columns: subgrid;
+        padding: 2rem 0 6rem;
+        background-color: var(--primary-light);
     }
 
     section {
+        grid-column: 2;
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
+    p.subheading {
+        font-size: 1.5rem;
+        font-weight: 600;
+        padding: 2rem 0;
+    }
 
 article {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-    gap: 2rem;
+    
+    gap: 2rem 0;
 }
 
 article .text {
-    grid-column: span 2;
     align-self: center;
 }
 
-article:nth-child(2) .text {
-    order: 1;
+.sticky_container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 1rem 0;
+}
+
+article:nth-child(2) .sticky_container {
+    justify-content: start;
+    margin-bottom: -2rem;
+}
+
+article:nth-child(3) .sticky_container {
+    justify-content: end;
+    order: -1;
 }
 
 .sticky {
-    width: 275px;
-    height: 275px;
-    background-image: url("/public/svg/stickynote.svg");
+    --size: 200px;
+    width: var(--size);
+    height: var(--size);
+    background-image: url("/svg/stickynote.svg");
     background-size: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    transform: rotate(15deg);
-    
-}
-
-article:nth-child(2) .sticky {
-    transform: rotate(-15deg);
+    /* ANIMATION PROPERTIES */
+    transform: translateY(275px);
+    opacity: 0;
+    filter: blur(5px);
+    transition: all .3s ease-out;
 }
 
 .sticky p {
@@ -101,9 +122,91 @@ article:nth-child(2) .sticky {
 }
 
 .sticky p.quote {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-family: "Caveat", cursive;
     font-style: italic;
 }
 
+.sticky.pop {
+    opacity: 1;
+    filter: blur(0);
+    transform: rotate(15deg) translateY(0);
+}
+
+article:nth-child(2) .sticky.pop {
+    transform: rotate(-15deg) translateY(0);
+}
+
+@media (min-width: 650px) {
+
+    article {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    article .sticky_container {
+        justify-content: center;
+    }
+
+    article:nth-child(2) .sticky_container {
+    order: -1;
+    justify-content: center;
+}
+
+    article:nth-child(3) .sticky_container {
+    order: 1;
+    justify-content: center;
+}
+
+}
+
+@media (min-width: 1000px) {
+    .container {
+        padding: 4rem 0;
+    }
+
+    p.subheading {
+        font-size: 2.5rem;
+    }
+
+    article {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    article .text {
+        grid-column: span 2;
+    }
+
+    article:nth-child(2) .text {
+    order: 1;
+}
+
+.sticky {
+    --size: 275px;
+    width: var(--size);
+    height: var(--size);
+}
+
+.sticky p.quote {
+    font-size: 1.5rem;
+}
+}
+
 </style>
+
+<script>
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("pop");
+            }
+        })
+    })
+
+    const stickyNotes = document.querySelectorAll(".sticky");
+
+    stickyNotes.forEach(element => {
+        observer.observe(element)
+    })
+
+</script>

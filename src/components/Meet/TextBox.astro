@@ -6,9 +6,9 @@ const { girl } = Astro.props
 <div class="arrow"></div>
 <div class="container">
     <h2>{girl.name}, {girl.age} år, bor i {girl.town}</h2>
-    <div class="text">
+    <div class="content">
         {girl.quotes.map((quote) =>{
-            return <p>{quote}</p>
+            return <article><p>{quote}</p></article>
         })}
     </div>    
 </div>
@@ -25,16 +25,29 @@ const { girl } = Astro.props
         background-color: var(--bg-color);
         max-width: 550px;
         border-radius: 1rem;
-        padding: 4.5rem 6rem;
+        padding: 2rem 2.5rem;
     }
 
-    .text {
-        max-height: 5lh;
-        overflow:scroll;
+    .content {
+        max-height: 80px;
+        overflow: scroll;      
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+
+    article {        
+        scroll-snap-align: start;
+        height: 100px;
     }
 
     p {
         color: var(--text-color);
         font-style: italic;
+    }
+
+    @media (min-width: 650px) {
+        .container {
+            padding: 4rem 6rem;
+        }
     }
 </style>

@@ -51,38 +51,88 @@ const girls = [
 ]
 
 ---
+<section>
+    <div class="custom-shape-divider-top-1713812774">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    <div class="container">
+    <h1>Mød Lara, Jasmin og Sarah</h1>
+    <ul>
+        {girls.map(girl=>{
+            return <li>
+                <Image src={girl.img} alt="" class="portrait" />
+                <div class="text-box">
+                    <TextBox girl={girl} />
+                </div>
+                </li>
+        })}
+    </ul>
+</div>
+<div class="custom-shape-divider-bottom-1713813262">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+</div>
+</section>
 
-<h1>Mød Lara, Jasmin og Sarah</h1>
 
-<ul class="container">
-    {girls.map(girl=>{
-        return <li>
-            <Image src={girl.img} alt="" class="portrait" />
-            <div class="text-box">
-                <TextBox girl={girl} />
-            </div>
-            </li>
-    })}
-</ul>
+
+
 
 <style>
 
-    .container {
-        display: flex;
-        justify-content: space-between;
+    section {
+        grid-column: span 3;
+        display: grid;
+        grid-template-columns: subgrid;
+        position: relative;
     }
 
-    .container li {
+    .container {
+        grid-column: 2;
+        padding: 5rem 0 10rem;
+        z-index: 500;
+    }
+
+    ul {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
         align-items: center;
-        max-width: 300px;
+        gap: 2rem;
+    }
+
+    li {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        width: minmax(300px, 100%);
         overflow: visible;
+        position: relative;
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-100%);
+        transition: all .5s ease-in;        
+    }
+
+    li.show {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+    }
+
+    li.show:nth-child(2) {
+        transition-delay: 200ms;
+    }
+
+    li.show:nth-child(3) {
+        transition-delay: 400ms;
     }
 
     .portrait {
-        width: 300px;
+        width: 200px;
         border-radius: 100%;
         cursor: pointer;
         transition: .15s ease-in;
@@ -91,25 +141,117 @@ const girls = [
     .portrait:hover {
         transform: scale(1.05);
         filter: opacity(75%);
-
     }
 
     .text-box {
-        display: none;        
+        overflow: hidden;
+        opacity: 0;
+        max-height: 0;
+        transform: scale(75%);
+        transition: all .2s ease-out;
     }
 
     .text-box.active {
-        display: block;
+        max-height: 600px;        
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* WAVE */
+
+    .custom-shape-divider-top-1713812774 {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: -50;
+}
+
+.custom-shape-divider-top-1713812774 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 70px;
+}
+
+.custom-shape-divider-top-1713812774 .shape-fill {
+    fill: #F7C7D9;
+}
+
+.custom-shape-divider-bottom-1713813262 {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1713813262 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 50px;
+}
+
+.custom-shape-divider-bottom-1713813262 .shape-fill {
+    fill: #F7C7D9;
+}
+
+@media (min-width: 650px) {
+
+    li {
+        gap: 3rem;
+    }
+
+    .text-box {
         width: 550px;
+    }
+    
+    .portrait {
+        width: 300px;
+    }
+}
+
+@media (min-width: 1000px) {
+    ul {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+        gap: 1rem;
+    }
+
+    li {
+        max-width: 300px;
+    }
+
+    .container {
+        padding: 10rem 0 20rem;
     }    
+
+    .text-box {
+        position: absolute;
+        bottom: -416px;        
+    }
+
+    .custom-shape-divider-top-1713812774 svg {
+    height: 168px;
+}
+
+    .custom-shape-divider-bottom-1713813262 svg {
+    height: 250px;
+}
+
+}
 
 </style>
 
 <script>
 const girlPortraits = document.querySelectorAll(".portrait");
 const textBoxes = document.querySelectorAll(".text-box");
-
-console.log(textBoxes);
 
 girlPortraits.forEach(element => {
     element.addEventListener("click", function() {
@@ -129,4 +271,20 @@ girlPortraits.forEach(element => {
         }
     })
 })
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show")
+        }
+    })
+})
+
+const girls = document.querySelectorAll("li");
+
+girls.forEach(element => {
+        observer.observe(element)
+    })
+
+
 </script>

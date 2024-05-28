@@ -2,4 +2,101 @@
 
 ---
 
-<h1>Sisterhood: Tre Pigers Rejse Mod Selvværd og Styrke</h1>
+<div class="container">
+    <div class="content">
+        <h1>Sisterhood: Tre Pigers Rejse Mod Selvværd og Styrke</h1>
+        <img src="/svg/hero.svg" alt="Illustration of a girl with flowing long hair">
+    </div>    
+    <div class="custom-shape-divider-bottom-1713812182">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+        </svg>
+    </div>
+</div>
+
+
+<style>
+
+    .container, .content {
+        display: grid;
+        align-items: center;
+        position: relative;
+        height: 30rem;
+    }
+
+    .container {
+        grid-column: span 3;        
+        grid-template-columns: subgrid;        
+        overflow: hidden;
+    }
+
+    .content {
+        grid-column: 2;
+        grid-template-columns: repeat(2, 1fr);   
+    }
+
+    h1 {
+        grid-column: 2;
+    }
+
+    img {
+        position: absolute;
+        bottom: -2rem;
+        left: -22rem;
+        width: 1096px;
+        z-index: -150;
+    }
+
+    /* WAVE */
+
+    .custom-shape-divider-bottom-1713812182 {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1713812182 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+}
+
+.custom-shape-divider-bottom-1713812182 .shape-fill {
+    fill: #F7C7D9;
+}
+
+@media (min-width: 650px) {
+
+    .container {
+        padding: 3rem;
+    }
+
+    img {
+        width: 1408px;
+        left: -25rem;
+    }
+
+}
+
+@media (min-width: 1000px) {
+    .container {
+        height: 40rem;
+    }
+
+    img {
+        width: 1920px;
+        left: -30rem;
+        bottom: -10rem;
+    }
+
+    .custom-shape-divider-bottom-1713812182 svg {
+    height: 111px;
+}
+}
+
+</style>
+
